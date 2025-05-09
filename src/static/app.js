@@ -27,6 +27,23 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
         `;
 
+        if (details.participants.length > 0) {
+          const participantsList = document.createElement("ul");
+          participantsList.className = "participants-list";
+
+          details.participants.forEach((participant) => {
+            const listItem = document.createElement("li");
+            listItem.textContent = participant;
+            participantsList.appendChild(listItem);
+          });
+
+          activityCard.appendChild(participantsList);
+        } else {
+          const noParticipants = document.createElement("p");
+          noParticipants.textContent = "No participants yet";
+          activityCard.appendChild(noParticipants);
+        }
+
         activitiesList.appendChild(activityCard);
 
         // Add option to select dropdown
